@@ -4,8 +4,7 @@ var de = document.getElementById("demo");
 var show = document.getElementById("show");
 var num;
 
-function getRandNumber(min , max){    
-    //return Math.floor(Math.random() * (max-min+1) * min);
+function getRandNumber(min , max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 var ltrlist=["images/ant.png","images/bear.jpg","images/cat.jpg","images/dog.jpg","images/elephant.jpg","images/fish.jpg","images/Girraffe.jpg","images/Horse.jpg","images/Iguana.jpg","images/Jellyfish.jpg","images/Kangaro.png","images/Lion.jpg","images/Monkey.jpg","images/Nightingale.jpg","images/Owl.jpg","images/Panda.jpg","images/quail.jpg","images/rabbit.png","images/snake.png","images/Tiger.jpg","images/urial.jpg","images/vulture.png","images/whale.jpg","images/xiphias.png","images/yak.jpg","images/zebra.jpg"];
@@ -18,20 +17,24 @@ gnrtBtn.addEventListener("click",function(){
     num = parseInt(getText);
     console.log(num);
     for(var i = 0 ; i<num ; i++){
-        var bool=false;
+        //var bool=false;
         
         var index=getRandNumber(65,90);
         
         var res = String.fromCharCode(index);
-        //console.log(index);
-        
+        var ch=[];
+        for(var t=0 ; t<num ; t++){
+            ch[t]=res;
+        }
+        console.log(ch);
+        console.log(ch.includes("B"))
+        if(!ch.includes(res))
+        {
+            
+        }
         button = document.createElement("button");
         de.appendChild(button);
         button.innerHTML=res;
-        
-        
-        
-        
         
         button.style.fontSize="20px";
         button.style.marginRight="20px";
@@ -65,93 +68,18 @@ gnrtBtn.addEventListener("click",function(){
                 var te = String.fromCharCode(k);
                 if(this.innerHTML == te){
                     var imgIndex =k-65;
-                    //console.log(imgIndex);
                     var ret = ltrlist[imgIndex];
-                    //console.log(ret);
                     img.setAttribute("src",ret);
+                    var current;
+                    localStorage.setItem("Event",te);
+                    var now = new Date().getTime();
+                    var storedItem = localStorage.getItem("Event");
+                    console.log(storedItem);
+                    setTimeout(function(){
+                       localStorage.clear();
+                    },5000);
                 }
             }
-            
-           /*
-           if(this.innerHTML == "A"){
-                img.setAttribute("src","images/ant.png");
-           }
-           else if(this.innerHTML == "B"){
-               img.setAttribute("src","images/bear.jpg");
-           }
-           else if(this.innerHTML == "C"){
-               img.setAttribute("src","images/cat.jpg");
-           }
-           else if(this.innerHTML == "D"){
-               img.setAttribute("src","images/dog.jpg");
-           }
-           else if(this.innerHTML == "E"){
-               img.setAttribute("src","images/elephant.jpg");
-           }
-           else if(this.innerHTML == "F"){
-               img.setAttribute("src","images/fish.jpg");
-           }
-           else if(this.innerHTML == "G"){
-               img.setAttribute("src","images/Girraffe.jpg");
-           }
-           else if(this.innerHTML == "H"){
-               img.setAttribute("src","images/Horse.jpg");
-           }
-           else if(this.innerHTML == "I"){
-               img.setAttribute("src","images/Iguana.jpg");
-           }
-           else if(this.innerHTML == "J"){
-               img.setAttribute("src","images/Jellyfish.jpg");
-           }
-           else if(this.innerHTML == "K"){
-               img.setAttribute("src","images/Kangaro.png");
-           }
-           else if(this.innerHTML == "L"){
-               img.setAttribute("src","images/Lion.jpg");
-           }
-           else if(this.innerHTML == "M"){
-               img.setAttribute("src","images/Monkey.jpg");
-           }
-           else if(this.innerHTML == "N"){
-               img.setAttribute("src","images/Nightingale.jpg");
-           } 
-           else if(this.innerHTML == "O"){
-               img.setAttribute("src","images/Owl.jpg");
-           }
-           else if(this.innerHTML == "P"){
-               img.setAttribute("src","images/Panda.jpg");
-           }
-           else if(this.innerHTML == "Q"){
-               img.setAttribute("src","images/quail.jpg");
-           }
-           else if(this.innerHTML == "R"){
-               img.setAttribute("src","images/rabbit.png");
-           }
-           else if(this.innerHTML == "S"){
-               img.setAttribute("src","images/snake.png");
-           }
-            else if(this.innerHTML == "T"){
-               img.setAttribute("src","images/Tiger.jpg");
-           }
-            else if(this.innerHTML == "U"){
-               img.setAttribute("src","images/urial.jpg");
-          }
-            else if(this.innerHTML == "V"){
-               img.setAttribute("src","images/vulture.png");
-          }
-            else if(this.innerHTML == "W"){
-               img.setAttribute("src","images/whale.jpg");
-          }
-            else if(this.innerHTML == "X"){
-               img.setAttribute("src","images/xiphias.png");
-          }
-            else if(this.innerHTML == "Y"){
-               img.setAttribute("src","images/yak.jpg");
-          }
-            else if(this.innerHTML == "Z"){
-               img.setAttribute("src","images/zebra.jpg");
-          }
-          */
         });
     }
 });
